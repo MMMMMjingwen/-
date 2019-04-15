@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开始抽奖</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+    <style>
+    .banner{
+        text-align: center;
+        color: #FFF;
+          font-size: 0.6rem;
+          margin-top: 5%;
+          padding: 1rem 0rem 0rem 0rem;
+          font-weight:bold;
+          position: absolute;
+         
+     }
+		 #img{
+        background-image: url(./imgs/cjbg.png);
+        position:fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        /* min-width: 1000px;   */
+        z-index:-10;
+        zoom: 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center 0;
+        position: relative
+     }
+     .mobile {
+			padding-left: 0.5rem;
+			width: 8rem;
+    height: 1.2rem;
+    margin-left: 1rem;
+    margin-top: 6.5rem;
+    background-color: #fff;
+    border: 2px solid rgb(251,136,124);
+    border-radius: 7rem;
+    position: absolute;
+		font-size: 0.5rem;
+		color:#000;
+}
+   
+		 .senmsg {
+			padding-left: 0.5rem;
+			width: 3.5rem;
+    height: 1.2rem;
+    margin-left: 1rem;
+    margin-top: 8.5rem;
+    border: 2px solid rgb(251,136,124);
+    border-radius: 7rem;
+    position: absolute;
+		background-color: #fff;
+			font-size: 0.5rem;
+		color:#000;
+}
+   
+.yanzhengma {
+	width: 4rem;
+    height: 1.2rem;
+    margin-top: 8.5rem;
+    border: 1px solid rgb(254,77,58);
+    border-radius: 7rem;
+    position: absolute;
+    background-color: rgb(254,77,58);
+}
+    
+      input::-webkit-input-placeholder{
+				font-size: 0.35rem;
+		
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+					font-size: 0.35rem;
+
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+					font-size: 0.35rem;
+
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+					font-size: 0.35rem;
+	
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+
+				input[value]{ 
+			    margin-left: 5.5rem;
+         font-size: 0.4rem;
+         /* text-indent: 0.5rem; */
+         color: #fff;
+         /* letter-spacing: 0.2rem; */
+
+          }
+
+    </style>
+</head> 
+
+<body id='img'>
+    
+<div class="banner">
+    <img src="./imgs/logo.png" style='width: 2rem; margin: -0.9rem 4.5rem 0rem 1.4em;' >
+	
+</div>
+<input type="text" class='mobile' id='iphone' onblur="upperCase()" placeholder="请输入手机号">
+<input type="text" class='senmsg' id='code'  placeholder="输入验证码">
+<input type="button" class="yanzhengma"  onclick="code()" id='btnSendCode'  value='获取验证码'>
+<a href="javascript:void(0);" onclick="sub()"><img src="./imgs/qr.png" style='width: 8rem;margin-left: 1.2rem;margin-top: 10.5rem;'alt=""></a>
+
+<input type="hidden" id='id' >
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script>
+ 
+var InterValObj; //timer变量，控制时间 
+var count = 30; //间隔函数，1秒执行 
+var curCount;//当前剩余秒数 
+ //发送验证码
+  function code(){
+		　curCount = count; 
+   $("#btnSendCode").attr("disabled", "true"); 
+   $("#btnSendCode").val(curCount + "秒后可重新发送"); 
+   InterValObj = window.setInterval(SetRemainTime, 1000); 
+	 		
+	 if($('#btnSendCode').attr("disabled") != null){
+        // console.log('没有禁用属性')
+	    	sendCode()
+
+		}
+	}
+
+function SetRemainTime() { 
+      if (curCount == 0) {         
+        window.clearInterval(InterValObj);
+        $("#btnSendCode").removeAttr("disabled");
+        $("#btnSendCode").val("重新发送验证码"); 
+      } 
+      else { 
+        curCount--; 
+        $("#btnSendCode").val(curCount + "秒后可重新发送"); 
+      } 
+		} 
+	//验证发送验证码
+function sendCode(){
+			var number=$('#iphone').val()
+
+			sessionStorage.setItem('iphone',number)
+			var data=
+			{ "phone":number};
+
+     data=JSON.stringify(data)
+		 console.log(data)
+			$.ajax({
+            type: "post",
+             url: "/apis/sms/sendAuthCode",
+             data: data,
+             dataType:"json",
+             contentType: "application/json",
+             scriptCharset:'utf-8',
+			       timeout:10000,
+             success: function(info){
+							 console.log(info)
+               $('#id').val(info.data)
+            
+             },
+			   error: function(info){
+			       //  console.log(2);
+               console.log(info)
+             },
+			 
+
+      })
+		};
+
+		//验证手机号
+			function upperCase(){
+        var phone = document.getElementById('iphone').value;
+        if(!(/^1[34578]\d{9}$/.test(phone))){ 
+
+            alert("手机号码有误，请重填");  
+
+            return false; 
+
+        } 
+     }
+
+		//验证验证码
+		function sub(){
+			
+		
+			var ids=$('#id').val()
+			var code=$('#code').val()
+
+		var data=
+	 
+			 { "id":ids,"code":code};
+
+				data=JSON.stringify(data)
+				// console.log(data)
+			$.ajax({
+			type: "post",
+			 url: "/apis/sms/checkAuthCode",
+			 data: data,
+			 dataType:"json",
+			 contentType: "application/json",
+			 scriptCharset:'utf-8',
+			 timeout:10000,
+			 success: function(info){
+         console.log(info)
+         var user=info.data
+         sessionStorage.setItem('user',user)
+     
+				 if(info.result==0){
+							if(info.data==2){
+                console.log('新用户')
+                  //  window.location.href='./began.html'
+								  
+							}else{
+								console.log('老用户')
+                // window.location.href='./began.html'
+							}
+              window.location.href='./began.html'
+						 }else{
+							layer.msg(info.msg,{icon:2,time:1000}) 
+						 }
+			 },
+ error: function(info){
+			 //  console.log(2);
+				 console.log(info)
+			 },
+ 
+
+})
+
+	}
+ 
+ </script>
+</body>
+</html>

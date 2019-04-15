@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>免费摄影</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');  
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+    <style>
+    .banner{
+        text-align: center;
+         /* color: #FFF; */
+          font-size: 0.6rem;
+          margin-top: 5%;
+          padding: 1rem 0rem 0rem 0rem;
+          font-weight:bold;
+         
+         
+     }
+     .black{
+         margin-left: 27%;
+         width:50%;
+         background-color: black;
+         margin-top: 5%;
+         border-radius: 0.34666667rem;
+         
+     }
+  
+
+		
+    </style>
+</head>
+
+<body id='imgssss'>
+<div class="banner"  >
+    <a href="javascript:void(0);" id='guanbi'>  <img src="./imgs/guanbi.png" alt="" style='    height: 3%;
+        width: 4%;
+        margin-top: -13%;
+        margin-left: 2%;'></a>
+
+    <div style='    font-weight: 500;'>欢迎加入</div>
+    <p style=' padding: 0.2rem 0rem 0rem 0rem; font-weight: bold'>花生大家庭 </p>
+    <!-- <p class='black'>价值￥1280</p> -->
+    <img src="./imgs/smile.png" alt="" style='   width: 4rem;
+    /* margin: 113px auto; */
+    margin-top: 0%;
+    margin-left: 29%;
+    position: absolute;
+    height: 5rem;
+'>
+</div>
+<div class="activity">
+
+  <div class="activity-amin">
+     <a href="#" id='draw'><img style="    width: 7.5rem;
+      margin-top: 3%;
+      margin-left: 8%;
+      position: absolute;" src="./imgs/cc.png"></a>
+  
+  </div>
+  
+</div>
+
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="./js/layui-v2.4.5/layui/layui.js"></script>
+
+</body>
+</html>
+<script>
+    //弹窗
+layui.use('layer', function(){
+  var layer = layui.layer;
+  
+});   
+
+ $('#draw').click(function(){
+    window.parent.links(); 
+ })
+ $('#guanbi').click(function(){
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+      parent.layer.close(index); //再执行关闭
+  
+ })
+</script>

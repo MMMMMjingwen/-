@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>免费摄影</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');  
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+
+    <style>
+    .banner{
+        text-align: center;
+     
+          font-size: 0.6rem;
+          margin-top: 5%;
+          padding: 1rem 0rem 0rem 0rem;
+          font-weight:bold;
+         
+         
+     }
+     .black{
+         margin-left: 27%;
+         width:50%;
+         background-color: black;
+         margin-top: 5%;
+         border-radius: 0.34666667rem;
+         
+     }
+     #img{
+  
+        width: 100%;
+	     height: 100%;
+	position: relative;
+	background-position: 100% 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow-y: hidden;
+     }
+     .mobile {
+		
+			width: 8rem;
+    height: 1.2rem;
+  
+    background-color: #fff;
+    border: 2px solid rgb(251,198,2);
+    border-radius: 0.2rem;
+
+		font-size: 0.5rem;
+    color:#000;
+    position: absolute;
+    margin-left: 4%;
+    padding: 3%;
+}
+   
+		 .senmsg {
+      padding: 3%;
+      position: relative;
+    width: 8rem;
+    height: 1.2rem;
+ 
+    background-color: #fff;
+    border: 2px solid rgb(251,198,2);
+    border-radius: 0.2rem;
+		font-size: 0.5rem;
+    color:#000;
+    position: absolute;
+    margin-left: 4%;
+    margin-top: 18%;
+}
+   
+.yanzhengma {
+	width: 4rem;
+    height: 1.2rem;
+    margin-top: 8.5rem;
+    border: 1px solid rgb(254,77,58);
+    border-radius: 7rem;
+    position: absolute;
+    background-color: rgb(254,77,58);
+}
+    
+      input::-webkit-input-placeholder{
+				font-size: 0.35rem;
+		   text-align: center;
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+					font-size: 0.35rem;
+
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+					font-size: 0.35rem;
+
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+					font-size: 0.35rem;
+	
+				letter-spacing:0.2rem;
+        color:rgb(253,222,141);
+        }
+
+				input[value]{ 
+			    margin-left: 5.7rem;
+         font-size: 0.4rem;
+
+         color: #fff;
+     
+
+  }
+
+.wrapper-dropdown-1 {
+  width: 8rem;
+    height: 1.2rem;
+    margin: 0px 0.4rem; 
+
+    background-color: #fff;
+    border: 2px solid rgb(251,198,2);
+    border-radius: 0.2rem;
+		font-size: 0.5rem;
+    color:#000;
+    padding: 10px;
+  
+    box-shadow:none;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+.wrap{
+    background: rgb(251,198,2);
+    box-shadow: none;
+    border-bottom: 0;
+    color: #fff;
+}
+.wrapper-dropdown-1 .dropdown li  {
+  border-radius: 25px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: -5px 12px;
+    transition: all .3s ease-out;
+    border-bottom: 1px solid #e6e8ea;
+}
+.wrapper-dropdown-1.active .dropdown {
+  border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-height: 400px;
+    border: none;
+    z-index: 999;
+}
+.wrapper-dropdown-1 .dropdown {
+    border:none;
+
+}
+.wrapper-dropdown-1:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: rgb(251,198,2) transparent;
+}
+.wrapper-dropdown-1.active:after {
+    border-color:  rgb(251,198,2) transparent !important;
+}
+
+#dd span{
+
+  line-height: 0.6rem;
+    font-size: 0.35rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    color: rgb(253,222,141);
+    display: block;
+}
+.pp{
+  font-size: 14px;
+    color: gray;
+}
+    </style>
+</head>
+
+<body id='img'>
+
+<div class="banner"  >
+  <a href="javascript:void(0);" id='closesss' style='display:block'>  <img   src="./imgs/guanbi.png" alt="" style='    height: 3%;
+    width: 6%;
+    margin-top: -1rem;
+    margin-left: 0.5rem;'></a>
+
+    <div style='    font-weight: 500;'>恭喜您获得</div>
+    <p style=' padding: 0.2rem 0rem 0rem 0rem; font-weight: bold'>汪正摄影<spanv style='color:red'>免费全家福</span> </p>
+    <!-- <p class='black'>价值￥1280</p> -->
+    <img src="./imgs/family.png" alt="" style='    width: 8rem;
+    margin-top: 4%;
+    margin-left: 9%;
+    position: absolute;
+    height: 4rem;'>
+</div>
+<div class="activity">
+
+  <div class="activity-amin">
+
+    <section class="main">
+        <div class="wrapper-demo">
+            <div id="dd" class="wrapper-dropdown-1" tabindex="1">
+            <span >所属城市</span> 
+            <ul class="dropdown" tabindex="1">
+        <li><a href='javascript:void(0);'>上海</a></li>
+        <li><a href='javascript:void(0);'>北京</a></li>
+        <li><a href='javascript:void(0);'>南京</a></li>
+        <li><a href='javascript:void(0);'>天津</a></li>
+        <li><a href='javascript:void(0);'>成都</a></li>
+        <li><a href='javascript:void(0);'>沈阳</a></li>
+        <li><a href='javascript:void(0);'>大连</a></li>
+        </ul>
+
+        </div>
+        ​</div>
+        </section>
+    <input type="text" class='mobile' id='name' placeholder="请输入姓名">
+    <input type="text" class='senmsg' id='phone' placeholder="请输入联系方式">
+    <div class="prompt1"></div>
+    <!-- <button class="wt1 wt4">立即领取</button> -->
+     <a href="javascript:void(0);" id='draw'><img style="    width: 8.5rem;
+      margin-top: 32%;
+      margin-left: 5%;
+      position: absolute;" src="./imgs/dc.png"></a>
+  </div>
+  
+</div>
+<div class='activity-amin'>
+  <div class='pp'>【摄影活动参与城市】</div>
+  <div class='pp'> 北京、南京、天津、成都、沈阳、大连、上海</div>
+  <div style='height:10px'></div>
+  <div class='pp' style='color:red'>【提示】</div>
+ <a class='pp'> 如你所在城市非活动城市</a><br>
+ <a  class='pp'>点击此处 <span style='color:red'>重新获取</span>一次抽奖机会>></a>
+
+
+
+</div>
+
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript">
+
+function DropDown(el) {
+
+this.dd = el;
+
+this.placeholder = this.dd.children('span');
+
+this.opts = this.dd.find('ul.dropdown > li');
+
+this.val = '';
+
+this.index = -1;
+
+this.initEvents();
+
+}
+
+DropDown.prototype = {
+
+initEvents : function() {
+
+  var obj = this;
+
+
+
+  obj.dd.on('click', function(event){
+
+    $(this).toggleClass('active');
+
+    return false;
+
+  });
+
+
+
+  obj.opts.on('click',function(){
+
+    var opt = $(this);
+
+    obj.val = opt.text();
+
+    obj.index = opt.index();
+
+    obj.placeholder.text(obj.val);
+
+  });
+
+},
+
+getValue : function() {
+
+  return this.val;
+
+},
+
+getIndex : function() {
+
+  return this.index;
+
+}
+
+}
+
+
+
+$(function() {
+
+
+
+var dd = new DropDown( $('#dd') );
+
+
+
+$(document).click(function() {
+
+  // all dropdowns
+
+  $('.wrapper-dropdown-1').removeClass('active');
+
+});
+
+
+
+});
+
+
+
+
+
+
+//关闭弹窗
+$('#closesss').click(function(){
+			$.ajax({
+            type: "get",
+             url: "/apis/draw/addOne",
+             data: '',
+             dataType:"json",
+             contentType: "application/json",
+             scriptCharset:'utf-8',
+			       timeout:10000,
+             success: function(info){
+               console.log(info)
+               //点击关闭窗口刷新页面还是有抽奖机会
+                  window.parent.wload();
+           
+               var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                 parent.layer.close(index); //再执行关闭
+        
+              //  window.parent.jiu()
+              //  $('#id').val(info.data)
+               
+             },
+			 error: function(info){
+			       //  console.log(2);
+               console.log(info)
+             },
+			 
+
+      })
+  
+
+})
+
+
+
+
+
+
+var awards=window.parent.$("#chinese").val()
+
+
+    $("#draw").click(function(){
+               
+        var name=$("#name").val();
+      var phone=$("#phone").val();
+  
+      // var number=$('#iphone').val()
+			// sessionStorage.setItem('iphone',number)
+			var data=
+			{"name":name,"phone":phone,"awards":awards}
+
+     data=JSON.stringify(data)
+		 console.log(data)
+			$.ajax({
+            type: "post",
+             url: "/apis/bingo/insert",
+             data: data,
+             dataType:"json",
+             contentType: "application/json",
+             scriptCharset:'utf-8',
+			       timeout:10000,
+             success: function(info){
+               console.log(info)
+            
+               window.parent.photo(); 
+					
+             },
+			 error: function(info){
+			       //  console.log(2);
+               console.log(info)
+             },
+			 
+
+      })
+      
+		// if(text1 !="" && text2 !="" && /^1[34578]\d{9}$/.test(text1)){
+		     
+		// 	$(location).attr('href', 'zhuanpan.html');
+		// 	return true;
+		// }else if(text1 =="" ){
+		// 	$(".prompt1").show();
+		// 	$(".prompt1").text("请输手机号码");
+		// 	return false;
+	  //   }else if(text2 =="" ){
+		// 	$(".prompt1").show();
+		// 	$(".prompt1").text("请输入密码");
+		// 	return false;
+	  //   }else{
+		// 	$(".prompt1").show();
+		// 	$(".prompt1").text("手机号码错误");
+		//     return false;
+	  //   }
+		
+		})
+		
+
+ </script>   
+</body>
+</html>

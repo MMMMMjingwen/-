@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开始抽奖</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+    <style>
+    .banner{
+        text-align: center;
+        color: #FFF;
+          font-size: 0.6rem;
+          margin-top: 5%;
+          padding: 1rem 0rem 0rem 0rem;
+          font-weight:bold;
+          position: absolute;
+         
+     }
+     .black{
+    
+         width:98%;
+         background-color: black;
+         margin-top: 5%;
+         font-size: 0.5rem;
+         border-radius: 0.34666667rem;
+    
+         
+     }
+     #img{
+         /* overflow: scroll; */
+        background-image: url(./imgs/cjbg.png);
+        position:fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        /* min-width: 1000px;   */
+        z-index:-10;
+        zoom: 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center 0;
+        position: relative
+     }
+     .choujiang{
+         height: 50px;
+         width: 50%;
+         background-color: white;
+
+     }
+     /* .zj-main {
+    width: 36%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-size: 100% 100%;
+    position: absolute;
+    overflow: hidden;
+   
+}
+.zj-main .txzl {
+    width: 70%;
+    height: auto;
+    position: absolute;
+    top: 28%;
+    left: 15%;
+    background: white;
+    border-radius: 5px;
+    color: #7A312D;
+    text-align: center;
+    font-size: 4vw;
+    line-height: 6vw;
+}
+ #layui-layer1{
+ border-radius: 3%;
+ }
+ .layui-layer-setwin .layui-layer-close2 {
+    background-position: 16px -35px !important;
+    cursor: pointer!important;
+    position: absolute!important;
+    right: 6.3rem !important;
+    top: -9px!important;;
+} */
+    </style>
+</head> 
+
+<body id='img'>
+    
+<div class="banner">
+    <img src="./imgs/logo.png" style='width: 2rem;    margin: -0.9rem 4.5rem 0rem 1.4em;' >
+    <img src="./imgs/huiyuanri.png" alt="" style=' width: 9rem;text-align: center;    margin-left: 0.4rem;'>
+    <img src="./imgs/cj.png" alt=""style='width: 7rem;     margin-left: 1.5rem;margin-top: -1rem;' >
+    <a href="javascript:void(0);" id='action'><img  style='width: 7rem;margin-left:1.5rem;margin-top:0.5rem;' src="./imgs/cc.png" alt=""></a>
+</div>
+   
+
+
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="./js/layui-v2.4.5/layui/layui.js"></script>
+ <script type="text/javascript">
+//弹窗
+layui.use('layer', function(){
+  var layer = layui.layer;
+  
+});   
+var user=sessionStorage.getItem('user')
+  console.log('user：'+user)
+
+//欢迎花生大家庭（new）
+  function young() { 
+    layer.open({
+        type: 2
+        ,title: false //不显示标题栏
+        ,closeBtn: false
+        ,area: ['70%','40%']
+        ,scrollbar:false
+        ,content: './young.html'
+        ,success:function(){
+
+        }
+      
+      });
+   }
+//获取一次抽奖机会（old）
+  function old() { 
+    layer.open({
+        type: 2
+        ,title: false //不显示标题栏
+        ,closeBtn: false
+        ,area: ['70%','40%']
+        ,scrollbar:false
+        ,shade: 0.8
+        ,content: './old.html'
+      
+      });
+   }
+   
+
+   //页面跳转
+   function links(){
+    window.location.href='./draw.html'
+   }
+
+ $('#action').click(function(){
+   if(user==1){
+    old()
+   }else if(user==2){
+    young()
+   }else{
+     window.location.href='./login.html'
+   }
+ 
+ })
+
+
+ </script>   
+</body>
+</html>
